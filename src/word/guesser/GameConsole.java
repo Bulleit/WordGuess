@@ -102,7 +102,7 @@ public class GameConsole {
                 System.out.println("You already guessed that.");
             }
 
-            System.out.println("Your previous guesses: " + ge.tries.toString().replace("[", "").replace("]", "") + "\n");
+            System.out.println("Your previous guesses: " + ge.getGuesses().toString().replace("[", "").replace("]", "") + "\n");
 
             for (int i = 0; i < ge.wordLength(); i++) {
                 System.out.print(m.get(i));
