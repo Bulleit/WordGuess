@@ -17,20 +17,41 @@ public class GameConsole {
     /**
      * The main method.
      */
-    public void play() {
+    public void play()
+    {
+        Scanner sc = new Scanner(System.in);
+        String userInput = "";
+        int userOption;
+
         ge.insertLetters(); // it takes the secret word and splits it up into letters which will be put in the 'letters' array list.
         System.out.println("This is the Word Guesser game.");
         System.out.println("In this game, you must guess a word.");
         System.out.println("Try entering different letters to see if they fit the word.");
-        System.out.println("The length of the word is " + ge.wordLength() + " letters.\n");
+        System.out.println("Choose option:");
+        System.out.println("Show High Score - enter \"1\"");
+        System.out.println("Start Game - enter \"2\"");
+        System.out.println("Exit game - enter \"3\"");
+        System.out.println("Enter option: ");
 
-        for (int i = 0; i < ge.wordLength(); i++) {
-            m.add("*");
-            System.out.print(m.get(i));
+        while (!userInput.equals("3"))
+        {
+            userInput = sc.nextLine();
+            userOption = Integer.valueOf(userInput);
+
+
+            switch (userOption)
+            {
+                case 1:
+                    showHighScore();
+                    break;
+                case 2:
+                    playGame();
+                    break;
+                case 3:
+                    //exit
+                    break;
+            }
         }
-        //System.out.println(ge.getSecretWord());
-        guesses(); // asks for an input.
-        System.out.println("Congratulations! You guessed the word in " + ge.tries.size() + " tries."); // Congrats.
     }
 
     /**
