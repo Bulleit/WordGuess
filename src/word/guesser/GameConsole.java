@@ -2,6 +2,7 @@ package word.guesser;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import wghighscore.Highscore;
 
 /**
  *
@@ -13,12 +14,12 @@ public class GameConsole {
     private ArrayList<String> m = new ArrayList<String>(ge.wordLength()); // creates a new arraylist full of stars.
     private ArrayList<String> progress = new ArrayList<String>(); // the other array list with the letters we already guessed.
     boolean wordIsGuessed = false; // did we win?
+    Highscore hs = Highscore.getInstance();
 
     /**
      * The main method.
      */
-    public void play()
-    {
+    public void menu() {
         Scanner sc = new Scanner(System.in);
         String userInput = "";
         int userOption;
@@ -33,16 +34,14 @@ public class GameConsole {
         System.out.println("Exit game - enter \"3\"");
         System.out.println("Enter option: ");
 
-        while (!userInput.equals("3"))
-        {
+        while (!userInput.equals("3")) {
             userInput = sc.nextLine();
             userOption = Integer.valueOf(userInput);
 
 
-            switch (userOption)
-            {
+            switch (userOption) {
                 case 1:
-                   // showHighScore();
+                    hs.getHighscore();
                     break;
                 case 2:
                     playGame();
@@ -115,25 +114,31 @@ public class GameConsole {
             wordIsGuessed = true;
         }
     }
-        public void playGame()
-    {
+
+    public void playGame() {
         System.out.println("The length of the word is " + ge.wordLength() + " letters.\n");
 
-        for (int i = 0; i < ge.wordLength(); i++)
-        {
+        for (int i = 0; i < ge.wordLength(); i++) {
             m.add("*");
             System.out.print(m.get(i));
         }
         //System.out.println(ge.getSecretWord());
         guesses(); // asks for an input.
+        hs.setHighscore(ge.getSecretWord(), ge.tries.size());
+        m.clear();
         System.out.println("\n \nCongratulations! You guessed the word " + ge.getSecretWord() + " in " + ge.tries.size() + " tries."); // Congrats.
         System.out.println("");
         System.out.println("");
-        play();
+        menu();
     }
 
-    private void showHighScore()
-    {
-        throw new UnsupportedOperationException("Not yet implemented");
+    private void printHighscore() {
+        for (String[] a : hs.getHighscore()) {
+            for (String b : a) {
+                if (b != null) {
+                    System.out.println(b);
+                }
+            }
+        }
     }
 }
