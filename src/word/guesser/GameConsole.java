@@ -23,7 +23,7 @@ public class GameConsole {
         Scanner sc = new Scanner(System.in);
         String userInput = "";
         int userOption;
-
+        ge.resetEverything();
         ge.insertLetters(); // it takes the secret word and splits it up into letters which will be put in the 'letters' array list.
         System.out.println("This is the Word Guesser game.");
         System.out.println("In this game, you must guess a word.");
