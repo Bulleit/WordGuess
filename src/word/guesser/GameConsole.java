@@ -6,7 +6,7 @@ import wghighscore.Highscore;
 
 /**
  *
- * @author Htx-Bruger, Anthony Monori, Sebastian, Damian
+ * @author Htx-Bruger, Anthony, Sebastian, Damian
  */
 public class GameConsole {
 
