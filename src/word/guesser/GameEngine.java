@@ -106,7 +106,7 @@ public class GameEngine {
     }
     
     /**
-     * 
+     * Resets everything - gets a new word, deletes the arrays used with the other word.
      */
     public void resetEverything(){
         currentWord = words.getWord();
