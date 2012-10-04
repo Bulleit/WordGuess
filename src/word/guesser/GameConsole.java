@@ -42,7 +42,7 @@ public class GameConsole {
             switch (userOption)
             {
                 case 1:
-                    showHighScore();
+                   // showHighScore();
                     break;
                 case 2:
                     playGame();
@@ -114,5 +114,26 @@ public class GameConsole {
         if (!m.contains("*")) {
             wordIsGuessed = true;
         }
+    }
+        public void playGame()
+    {
+        System.out.println("The length of the word is " + ge.wordLength() + " letters.\n");
+
+        for (int i = 0; i < ge.wordLength(); i++)
+        {
+            m.add("*");
+            System.out.print(m.get(i));
+        }
+        //System.out.println(ge.getSecretWord());
+        guesses(); // asks for an input.
+        System.out.println("\n \nCongratulations! You guessed the word " + ge.getSecretWord() + " in " + ge.tries.size() + " tries."); // Congrats.
+        System.out.println("");
+        System.out.println("");
+        play();
+    }
+
+    private void showHighScore()
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }
