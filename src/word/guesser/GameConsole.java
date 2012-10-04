@@ -41,7 +41,7 @@ public class GameConsole {
 
             switch (userOption) {
                 case 1:
-                    hs.getHighscore();
+                    printHighscore();
                     break;
                 case 2:
                     playGame();
@@ -116,6 +116,7 @@ public class GameConsole {
     }
 
     public void playGame() {
+        wordIsGuessed = false;
         System.out.println("The length of the word is " + ge.wordLength() + " letters.\n");
 
         for (int i = 0; i < ge.wordLength(); i++) {
