@@ -110,7 +110,7 @@ public class GameConsole {
      * wordIsGuessed to true in case we've guessed the word.
      */
     private void isGuessed() {
-        if (!m.contains("*")) {
+        if (m.equals(ge.letters)) {
             wordIsGuessed = true;
         }
     }
