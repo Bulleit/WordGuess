@@ -3,7 +3,8 @@ package word.guesser;
 import java.util.ArrayList;
 
 /**
- *
+ * This is the Business Logic layer of the WordGuesser game. It does the magic.
+ * 
  * @author Htx-Bruger, Anthony, Sebastian, Damian
  */
 public class GameEngine {
