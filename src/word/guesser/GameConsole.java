@@ -5,7 +5,8 @@ import java.util.Scanner;
 import wghighscore.Highscore;
 
 /**
- *
+ * This is the UI of the WordGuesser game. Prints out stuff and reads in some input.
+ * 
  * @author Htx-Bruger, Anthony, Sebastian, Damian
  */
 public class GameConsole {
