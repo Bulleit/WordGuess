@@ -21,8 +21,8 @@ public class GameConsole {
      */
     public void menu() {
         Scanner sc = new Scanner(System.in);
-        String userInput = "";
-        int userOption;
+        String userInput = ""; // an empty string for the input we use in the menu feature.
+        int userOption; // a variable for the user input, used in the menu feature.
         ge.resetEverything(); // resets everything.
         ge.insertLetters(); // it takes the secret word and splits it up into letters which will be put in the 'letters' array list.
         System.out.println("\nChoose an option:");
@@ -31,10 +31,16 @@ public class GameConsole {
         System.out.println("0. Exit game");
         System.out.print("Enter an option: ");
 
+        // Checks whether the user entered a number or not; if not, it doesn't gives us an error, but rather waits until the user gives a correct option.
         while (!userInput.equals("0")) {
             userInput = sc.nextLine();
-            userOption = Integer.valueOf(userInput);
-
+            try {
+                userOption = Integer.valueOf(userInput);
+            } catch (NumberFormatException e) {
+                userOption = 99;
+            }
+        //
+            
             switch (userOption) {
                 case 1:
                     // Prints out the highscores.
@@ -46,6 +52,7 @@ public class GameConsole {
                     break;
                 case 3:
                     // Stops the program.
+                    System.out.println("Goodbye! Hope to see you next time!"); // Just a goodbye message.
                     break;
             }
         }
@@ -54,21 +61,30 @@ public class GameConsole {
     /**
      *
      */
-    public void instructions() {
-        System.out.println("This is the Word Guesser game.");
-        System.out.println("In this game, you must guess a word.");
-        System.out.println("Try entering different letters to see if they fit the word.");
+    public void playGame() {
+        wordIsGuessed = false; // As we didn't completed the new word yet, it re-sets the value of wordIsGuessed to false.
+        System.out.println("The length of the word is " + ge.wordLength() + " letters.\n");
+
+        for (int i = 0; i < ge.wordLength(); i++) {
+            m.add("*");
+            System.out.print(m.get(i));
+        }
+//      System.out.println(ge.getSecretWord());
+        guesses(); // asks for an input.
+        hs.setHighscore(ge.getSecretWord(), ge.tries.size()); // sets the highscore after the user gets the word right.
+        m.clear(); // clears the array full of stars/letters.
+        System.out.println("\n \nCongratulations! You guessed the word " + ge.getSecretWord() + " in " + ge.tries.size() + " tries.\n\n"); // Congrats.
+        menu(); // goes back to the main menu.
     }
 
     /**
-     * In case we guessed a letter it changes one of the stars.
-     *
-     * @param guess is the letter what we guessed.
-     * @param i position.
+     * Prints out some text (instructions).
      */
-    public void progressChange(char guess, int i) {
-        m.set(i, String.valueOf(guess));
-        isGuessed(); // checks if the word is guessed or not.
+    public void instructions() {
+        System.out.println("Welcome!");
+        System.out.println("This is the Word Guesser game.");
+        System.out.println("In this game, you must guess a word.");
+        System.out.println("Try entering different letters to see if they fit the word.");
     }
 
     /**
@@ -99,7 +115,7 @@ public class GameConsole {
                     }
                 }
             } else {
-                System.out.println("You already guessed that.");
+                System.out.println("You already guessed that. Try another word.");
             }
 
             System.out.println("Your previous guesses: " + ge.getGuesses().toString().replace("[", "").replace("]", "") + "\n");
@@ -113,6 +129,17 @@ public class GameConsole {
     }
 
     /**
+     * In case we guessed a letter it changes one of the stars.
+     *
+     * @param guess is the letter what we guessed.
+     * @param i position.
+     */
+    public void progressChange(char guess, int i) {
+        m.set(i, String.valueOf(guess));
+        isGuessed(); // checks if the word is guessed or not.
+    }
+
+    /**
      * Checks whether the word is fully guessed or not. Changes the
      * wordIsGuessed to true in case we've guessed the word.
      */
@@ -123,28 +150,10 @@ public class GameConsole {
     }
 
     /**
-     *
-     */
-    public void playGame() {
-        wordIsGuessed = false;
-        System.out.println("The length of the word is " + ge.wordLength() + " letters.\n");
-
-        for (int i = 0; i < ge.wordLength(); i++) {
-            m.add("*");
-            System.out.print(m.get(i));
-        }
-        //System.out.println(ge.getSecretWord());
-        guesses(); // asks for an input.
-        hs.setHighscore(ge.getSecretWord(), ge.tries.size());
-        m.clear();
-        System.out.println("\n \nCongratulations! You guessed the word " + ge.getSecretWord() + " in " + ge.tries.size() + " tries."); // Congrats.
-        System.out.println("");
-        System.out.println("");
-        menu();
-    }
-
-    /**
-     *
+     * This method prints out the high scores and returns to the main menu.
+     * There are two different versions for this (the second one is commented
+     * out), but the first one displays the information in a more user friendly
+     * format.
      */
     private void printHighscore() {
         for (int i = 0; i < hs.getHighscore().length; i++) {
