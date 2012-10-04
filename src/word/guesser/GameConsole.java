@@ -41,7 +41,6 @@ public class GameConsole {
                 userOption = 99;
             }
         //
-            
             switch (userOption) {
                 case 1:
                     // Prints out the highscores.
@@ -74,7 +73,7 @@ public class GameConsole {
         guesses(); // asks for an input.
         hs.setHighscore(ge.getSecretWord(), ge.tries.size()); // sets the highscore after the user gets the word right.
         m.clear(); // clears the array full of stars/letters.
-        System.out.println("\n \nCongratulations! You guessed the word " + ge.getSecretWord() + " in " + ge.tries.size() + " tries.\n\n"); // Congrats.
+        System.out.println("\nCongratulations! You guessed the word " + ge.getSecretWord() + " in " + ge.tries.size() + " tries.\n"); // Congrats.
         menu(); // goes back to the main menu.
     }
 
