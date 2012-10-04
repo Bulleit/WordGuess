@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Htx-Bruger, Anthony Monori, Sebastian, Damian
+ * @author Htx-Bruger, Anthony, Sebastian, Damian
  */
 public class GameEngine {
 
@@ -84,7 +84,7 @@ public class GameEngine {
      *
      * @return 'tries' array list.
      */
-    ArrayList<String> returnGuesses() {
+    public ArrayList<String> getGuesses() {
         return tries;
     }
 
@@ -104,11 +104,11 @@ public class GameEngine {
         }
         return true;
     }
-
+    
     /**
-     *
+     * 
      */
-    public void resetEverything() {
+    public void resetEverything(){
         currentWord = words.getWord();
         tries.clear();
         letters.clear();
