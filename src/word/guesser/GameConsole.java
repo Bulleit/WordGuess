@@ -93,9 +93,9 @@ public class GameConsole {
     private void guesses() {
         Scanner sc = new Scanner(System.in);
 
-        while (!wordIsGuessed) {
+        while (!wordIsGuessed) { // goes until the word is guessed.
             System.out.print("\nYour guess: ");
-
+            // reads in the user input - either a letter or the whole word.
             String guess = sc.nextLine();
             char letter = guess.charAt(0);
             if (ge.canSubmit(String.valueOf(guess))) {
@@ -117,13 +117,11 @@ public class GameConsole {
             } else {
                 System.out.println("You already guessed that. Try another word.");
             }
-
             System.out.println("Your previous guesses: " + ge.getGuesses().toString().replace("[", "").replace("]", "") + "\n");
-
+            
             for (int i = 0; i < ge.wordLength(); i++) {
                 System.out.print(m.get(i));
             }
-
             guesses(); // calls for itself.
         }
     }
