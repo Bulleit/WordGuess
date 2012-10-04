@@ -104,4 +104,13 @@ public class GameEngine {
         }
         return true;
     }
+
+    /**
+     *
+     */
+    public void resetEverything() {
+        currentWord = words.getWord();
+        tries.clear();
+        letters.clear();
+    }
 }
