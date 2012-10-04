@@ -14,43 +14,50 @@ public class GameConsole {
     private ArrayList<String> m = new ArrayList<String>(ge.wordLength()); // creates a new arraylist full of stars.
     private ArrayList<String> progress = new ArrayList<String>(); // the other array list with the letters we already guessed.
     boolean wordIsGuessed = false; // did we win?
-    Highscore hs = Highscore.getInstance();
+    private Highscore hs = Highscore.getInstance(); // creates a new highscore object.
 
     /**
-     * The main method.
+     * The main-menu method.
      */
     public void menu() {
         Scanner sc = new Scanner(System.in);
         String userInput = "";
         int userOption;
-        ge.resetEverything();
+        ge.resetEverything(); // resets everything.
         ge.insertLetters(); // it takes the secret word and splits it up into letters which will be put in the 'letters' array list.
-        System.out.println("This is the Word Guesser game.");
-        System.out.println("In this game, you must guess a word.");
-        System.out.println("Try entering different letters to see if they fit the word.");
-        System.out.println("Choose option:");
-        System.out.println("Show High Score - enter \"1\"");
-        System.out.println("Start Game - enter \"2\"");
-        System.out.println("Exit game - enter \"3\"");
-        System.out.println("Enter option: ");
+        System.out.println("\nChoose an option:");
+        System.out.println("1. Show Highscore");
+        System.out.println("2. Start Game");
+        System.out.println("0. Exit game");
+        System.out.print("Enter an option: ");
 
-        while (!userInput.equals("3")) {
+        while (!userInput.equals("0")) {
             userInput = sc.nextLine();
             userOption = Integer.valueOf(userInput);
 
-
             switch (userOption) {
                 case 1:
+                    // Prints out the highscores.
                     printHighscore();
                     break;
                 case 2:
+                    // Starts the game.
                     playGame();
                     break;
                 case 3:
-                    //exit
+                    // Stops the program.
                     break;
             }
         }
+    }
+
+    /**
+     *
+     */
+    public void instructions() {
+        System.out.println("This is the Word Guesser game.");
+        System.out.println("In this game, you must guess a word.");
+        System.out.println("Try entering different letters to see if they fit the word.");
     }
 
     /**
@@ -110,11 +117,14 @@ public class GameConsole {
      * wordIsGuessed to true in case we've guessed the word.
      */
     private void isGuessed() {
-        if (m.equals(ge.letters)) {
+        if (!m.contains("*")) {
             wordIsGuessed = true;
         }
     }
 
+    /**
+     *
+     */
     public void playGame() {
         wordIsGuessed = false;
         System.out.println("The length of the word is " + ge.wordLength() + " letters.\n");
@@ -133,13 +143,21 @@ public class GameConsole {
         menu();
     }
 
+    /**
+     *
+     */
     private void printHighscore() {
-        for (String[] a : hs.getHighscore()) {
-            for (String b : a) {
-                if (b != null) {
-                    System.out.println(b);
-                }
-            }
+        for (int i = 0; i < hs.getHighscore().length; i++) {
+            System.out.println("Word: " + hs.getHighscore()[i][0] + " | Highscore: " + hs.getHighscore()[i][1]);
         }
+        menu();
+//        for (String[] a : hs.getHighscore()) {
+//            for (String b : a) {
+//                if (b != null) {
+//                    System.out.println(b);
+//                }
+//            }
+//            menu();
+//        }
     }
 }
