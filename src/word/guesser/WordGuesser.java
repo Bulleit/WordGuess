@@ -6,7 +6,7 @@ package word.guesser;
 
 /**
  *
- * @author Htx-Bruger, Anthony Monori, Sebastian, Damian
+ * @author Htx-Bruger, Anthony, Sebastian, Damian
  */
 public class WordGuesser {
 
@@ -17,6 +17,7 @@ public class WordGuesser {
      */
     public static void main(String[] args) {
         GameConsole gc = new GameConsole();
-        gc.play();
+        gc.instructions();
+        gc.menu();
     }
 }
