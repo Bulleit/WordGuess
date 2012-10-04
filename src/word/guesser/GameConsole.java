@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Htx-Bruger
+ * @author Htx-Bruger, Anthony Monori, Sebastian, Damian
  */
 public class GameConsole {
 
