@@ -1,8 +1,10 @@
 package word.guesser;
 
 /**
- *
- * @author Htx-Bruger
+ * This class stores a string array full of words and has some method to get a
+ * new word from this string array.
+ * 
+ * @author Htx-Bruger, Anthony, Sebastian, Damian
  */
 import java.util.Random;
 
