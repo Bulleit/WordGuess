@@ -6,7 +6,7 @@ package word.guesser;
 
 /**
  *
- * @author Htx-Bruger
+ * @author Htx-Bruger, Anthony Monori, Sebastian, Damian
  */
 public class WordGuesser {
 
