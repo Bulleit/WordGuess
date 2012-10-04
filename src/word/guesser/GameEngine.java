@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GameEngine {
 
     public ArrayList<String> tries = new ArrayList<String>(); // previous tries.
-    private ArrayList<String> letters = new ArrayList<String>(); // contains the individual letters of the secret word.
+    public ArrayList<String> letters = new ArrayList<String>(); // contains the individual letters of the secret word.
     private WordList words = new WordList();
     private String currentWord = words.getWord(); // gets a new word.
 
