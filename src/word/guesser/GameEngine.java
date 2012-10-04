@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Htx-Bruger
+ * @author Htx-Bruger, Anthony Monori, Sebastian, Damian
  */
 public class GameEngine {
 
