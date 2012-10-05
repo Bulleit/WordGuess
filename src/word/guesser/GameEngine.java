@@ -1,10 +1,12 @@
 package word.guesser;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 /**
  * This is the Business Logic layer of the WordGuesser game. It does the magic.
- * 
+ *
  * @author Htx-Bruger, Anthony, Sebastian, Damian
  */
 public class GameEngine {
@@ -105,11 +107,12 @@ public class GameEngine {
         }
         return true;
     }
-    
+
     /**
-     * Resets everything - gets a new word, deletes the arrays used with the other word.
+     * Resets everything - gets a new word, deletes the arrays used with the
+     * other word.
      */
-    public void resetEverything(){
+    public void resetEverything() {
         currentWord = words.getWord();
         tries.clear();
         letters.clear();

@@ -5,8 +5,9 @@ import java.util.Scanner;
 import wghighscore.Highscore;
 
 /**
- * This is the UI of the WordGuesser game. Prints out stuff and reads in some input.
- * 
+ * This is the UI of the WordGuesser game. Prints out stuff and reads in some
+ * input.
+ *
  * @author Htx-Bruger, Anthony, Sebastian, Damian
  */
 public class GameConsole {
@@ -40,8 +41,12 @@ public class GameConsole {
             } catch (NumberFormatException e) {
                 userOption = 99;
             }
-        //
+            //
             switch (userOption) {
+                case 0:
+                    // Stops the program.
+                    System.out.println("Goodbye! Hope to see you next time!"); // Just a goodbye message.
+                    break;
                 case 1:
                     // Prints out the highscores.
                     printHighscore();
@@ -50,16 +55,13 @@ public class GameConsole {
                     // Starts the game.
                     playGame();
                     break;
-                case 3:
-                    // Stops the program.
-                    System.out.println("Goodbye! Hope to see you next time!"); // Just a goodbye message.
-                    break;
             }
+            break;
         }
     }
 
     /**
-     *
+     * This method prints out the progress and some other text - and it also calls for the input.
      */
     public void playGame() {
         wordIsGuessed = false; // As we didn't completed the new word yet, it re-sets the value of wordIsGuessed to false.
@@ -71,7 +73,9 @@ public class GameConsole {
         }
 //      System.out.println(ge.getSecretWord());
         guesses(); // asks for an input.
-        hs.setHighscore(ge.getSecretWord(), ge.tries.size()); // sets the highscore after the user gets the word right.
+        if (hs.isHighscore(ge.getSecretWord(), ge.tries.size()) || hs.getWordHighscore(ge.getSecretWord()) == -1) {
+            hs.setHighscore(ge.getSecretWord(), ge.tries.size()); // sets the highscore after the user gets the word right.
+        }
         m.clear(); // clears the array full of stars/letters.
         System.out.println("\nCongratulations! You guessed the word " + ge.getSecretWord() + " in " + ge.tries.size() + " tries.\n"); // Congrats.
         menu(); // goes back to the main menu.
@@ -118,7 +122,7 @@ public class GameConsole {
                 System.out.println("You already guessed that. Try another word.");
             }
             System.out.println("Your previous guesses: " + ge.getGuesses().toString().replace("[", "").replace("]", "") + "\n");
-            
+
             for (int i = 0; i < ge.wordLength(); i++) {
                 System.out.print(m.get(i));
             }
